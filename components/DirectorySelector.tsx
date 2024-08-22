@@ -9,7 +9,7 @@ const DirectorySelector = () => {
   const router = useRouter();
   
   const handleClick = async () => {
-    const res = await fetch('/api/dirs/add', {
+    const res = await fetch('/api/directory/get-dirs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ const DirectorySelector = () => {
     <div className='flex flex-row gap-2'>
       <Input
         className="border-2"
-        placeholder="directory" value={dir} onChange={(e) => setDir(e.target.value)} />
+        placeholder="search directory" value={dir} onChange={(e) => setDir(e.target.value)} />
       <Button onClick={handleClick}>open</Button>
     </div>
   )

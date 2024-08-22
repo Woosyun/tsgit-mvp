@@ -19,7 +19,7 @@ const page = () => {
 
   const redirectToDirectory = async (dir: string) => {
     // alert(dir);
-    const res = await fetch('/api/dir/check', {
+    const res = await fetch('/api/directory/check-dir', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ const page = () => {
 
   useEffect(() => {
     const fetchDirs = async () => {
-      const res = await fetch('/api/dirs/get');
+      const res = await fetch('/api/directory/get-dirs');
       if (!res.ok) {
         const message = await res.json();
         console.error('(fetchDirs)' + message);

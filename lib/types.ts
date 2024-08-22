@@ -1,13 +1,9 @@
-import { Commit, Hash } from '@woosy2207/tsgit/dist/types';
+import { Commit, Hash, HeadType } from '@woosy2207/tsgit/dist/types';
+export type { Commit, Hash, HeadType };
 
 export type Directory = {
   path: string;
   lastUsed: string;
 }
 
-export type { Commit, Hash };
-export type Graph = {
-  commits: Map<Hash, Commit>
-  edges: Map<Hash, Hash[]>;
-  branches: Map<string, Hash>;
-}
+export type Branch = [string, Commit[]];
