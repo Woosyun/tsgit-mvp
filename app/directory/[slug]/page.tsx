@@ -17,7 +17,6 @@ import BranchViewer from "@/components/BranchViewer";
 export default function Page({ params }: { params: { slug: string } }) {
   const path = decodeURIComponent(params.slug);
   const [branches, setBranches] = useState<Branch[]>([]);
-  const [isBranchViewerOpen, setIsBranchViewerOpen] = useState(false);
 
   const locationList: [string, string][] = [
     ['Home', '/'],
@@ -58,26 +57,31 @@ export default function Page({ params }: { params: { slug: string } }) {
         </TableHeader>
         <TableBody>
           {branches.map((branch, i) => (
-            <BranchRow key={i} branch={branch} handleRowClick={() => setIsBranchViewerOpen(true)} />
+            <BranchRow key={i} branch={branch}/>
           ))}
         </TableBody>
       </Table>
-
-      <BranchViewer isOpen={isBranchViewerOpen} branch={branches[0]} />
     </div>
   )
 }
 
 function BranchRow({
   branch,
-  handleRowClick
 }: {
     branch: Branch,
-  handleRowClick: () => void
 }) {
+  const [isBranchViewerOpen, setIsBranchViewerOpen] = useState(false);
+
   return (
-    <TableRow onClick={handleRowClick}>
-      <TableCell>{branch[0]}</TableCell>
-    </TableRow>
+    <>
+      <TableRow onClick={() => setIsBranchViewerOpen(true)}>
+        <TableCell>{branch[0]}</TableCell>
+      </TableRow>
+      <BranchViewer
+        isOpen={isBranchViewerOpen}
+        setIsOpen={setIsBranchViewerOpen}
+        branch={branch}
+      />
+    </>
   )
 }
