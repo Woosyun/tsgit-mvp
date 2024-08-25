@@ -1,5 +1,5 @@
-import { Commit, Hash, HeadType } from '@woosy2207/tsgit/dist/types';
-export type { Commit, Hash, HeadType };
+import { Commit, Hash, HeadType, EntryStatus, StatusType } from '@woosy2207/tsgit/dist/types';
+export type { Commit, Hash, HeadType, EntryStatus, StatusType };
 
 export type Directory = {
   path: string;
@@ -7,3 +7,4 @@ export type Directory = {
 }
 
 export type Branch = [string, Commit[]];
+

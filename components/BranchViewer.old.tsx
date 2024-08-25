@@ -34,9 +34,8 @@ export default function BranchViewer({
         <DialogHeader>
           <DialogTitle>{branch[0]}</DialogTitle>
         </DialogHeader>
-        <DialogDescription>commit history</DialogDescription>
         <Table>
-        <TableCaption>Commit History</TableCaption>
+          <TableCaption>Commit History</TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead>commit message</TableHead>
@@ -44,7 +43,7 @@ export default function BranchViewer({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {branch[1].map((commit) => <CommitRow key={commit.hash} commit={commit} />)}
+            {branch[1].map((commit) => <CommitRow key={commit.entry.hash} commit={commit} />)}
           </TableBody>
         </Table>
       </DialogContent>
@@ -56,7 +55,7 @@ function CommitRow({ commit }: { commit: Commit }) {
   return (
     <TableRow>
       <TableCell>{commit.message}</TableCell>
-      <TableCell>{commit.hash}</TableCell>
+      <TableCell>{commit.entry.hash}</TableCell>
     </TableRow>
   )
 }

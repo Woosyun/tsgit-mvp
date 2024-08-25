@@ -1,4 +1,4 @@
-import { Branch, Commit, Hash, HeadType } from "./types";
+import { Branch, Commit, EntryStatus, Hash, HeadType } from "./types";
 import VCS from '@woosy2207/tsgit';
 
 export const vcs = new VCS();
@@ -21,4 +21,19 @@ function getBranch([headName, head]: [headName: string, head: Hash]): Branch {
 
   const commits: Commit[] = ascendCommit(head);
   return [headName, commits];
+}
+
+export function getCurrentBranchName(): string{
+  const head: Hash = vcs.whereAmI();
+  const commit: Commit = vcs.readObject(head);
+  return commit.branch;
+}
+
+
+export function getCurrentStatus(): EntryStatus[] {
+  try {
+    return vcs.status();
+  } catch (error: any) {
+    throw new Error('(getCurrentStatus)->' + error.message);
+  }
 }
