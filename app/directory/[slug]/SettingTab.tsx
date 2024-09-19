@@ -4,8 +4,8 @@ import { Label } from "@/components/ui/label"
 
 export default function Settings() {
   return (
-    <div className='flex flex-col gap-10'>
-      <div className='flex flex-col gap-2'>
+    <div className='flex flex-col gap-10 items-center'>
+      <div className='flex flex-col gap-2 w-1/2'>
         <Label>ignore</Label>
         <div className='flex flex-row gap-2'>
           <Input />

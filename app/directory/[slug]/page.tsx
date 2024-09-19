@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import { Commit } from "@/lib/types";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import BranchViewer from "./BranchViewer";
-import HistoryViewer from "./HistoryViewer";
-import Settings from "./Settings";
+import BranchTab from "./BranchTab";
+import HistoryTab from "./HistoryTab";
+import SettingTab from "./SettingTab";
 import Sidebar from "./Sidebar";
 
 export default function Page({ params }: { params: { slug: string } }) {
@@ -47,13 +47,13 @@ export default function Page({ params }: { params: { slug: string } }) {
           <TabsTrigger value="settings">settings</TabsTrigger>
         </TabsList>
         <TabsContent value='branches'>
-          <BranchViewer branches={branches} />
+          <BranchTab branches={branches} />
         </TabsContent>
         <TabsContent value="history">
-          <HistoryViewer branchName={currentBranchName} commits={branches.get(currentBranchName)!} />
+          <HistoryTab branchName={currentBranchName} commits={branches.get(currentBranchName)!} />
         </TabsContent>
         <TabsContent value="settings">
-          <Settings />
+          <SettingTab />
         </TabsContent>
       </Tabs>
     </div>

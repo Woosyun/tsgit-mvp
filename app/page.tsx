@@ -75,7 +75,7 @@ const page = () => {
 
 function Row({ dir, handleClick }: { dir: Directory, handleClick: (dir: string) => void }) {
   return (
-    <TableRow onClick={() => handleClick(dir.path)}>
+    <TableRow onClick={() => handleClick(dir.path)} className='cursor-pointer'>
       <TableCell>{dir.path}</TableCell>
       <TableCell>{dir.lastUsed}</TableCell>
     </TableRow>
